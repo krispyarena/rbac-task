@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org" >
+<head>
+    <title>Student Page</title>
+</head>
+<body>
+
+<h1>Student List </h1>
+
+<a th:href="@{/admin/student/create}"
+   style="
+    position: absolute;
+    top: 75px;
+    left: 60%;">
+    <button> Add Student </button>
+</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th> Action </th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.address}"></td>
+        <td th:text="${student.phone}"></td>
+        <td>
+            <a th:href="@{/admin/student/edit/{id}(id=${student.id}) }"> <button> Edit </button> </a>
+            <a th:href="@{/admin/student/delete/{id}(id=${student.id}) }" onclick="return confirm ('Are you sure you want to delete?')">  <button> delete </button> </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

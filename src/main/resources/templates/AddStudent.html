@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+</head>
+<body>
+<div th:if="${error}">
+    <span th:text="${error}"></span>
+</div>
+
+<h2>Add Student</h2>
+
+<form method="post" th:object="${student}" th:action = "@{/admin/student/create}">
+    <label>Name:</label>
+    <input type="text" th:field="*{name}"/><br>
+
+    <label>Number:</label>
+    <input type="text" th:field="*{phone}"/><br>
+
+    <label>Email:</label>
+    <input type="text" th:field="*{email}"/><br>
+
+    <label>Address:</label>
+    <input type="text" th:field="*{address}"/><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+</body>
+</html>
